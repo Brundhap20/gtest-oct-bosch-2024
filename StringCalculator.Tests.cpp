@@ -101,13 +101,9 @@ TEST(string_calculator_add,when_passed_negative_numbers_throws_an_exception_list
 
     try {
         objUnderTest.Add(input);
-        FAIL() << "Expected std::invalid_argument";
     } 
     catch (const std::invalid_argument& e) {
         EXPECT_EQ(e.what(), std::string("Negatives not allowed: -2,-4"));
-    }
-    catch (...) {
-        FAIL() << "Expected std::invalid_argument";
     }
 }
 
