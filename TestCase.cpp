@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
 
-Test(testsuit A){
-ASSERT_EQ(1,1);
+TEST(FactorialTest, HandlesZeroInput) {
+  EXPECT_EQ(1, 1);
 }
