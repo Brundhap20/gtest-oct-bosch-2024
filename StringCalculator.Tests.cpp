@@ -110,12 +110,6 @@ TEST(string_calculator_add,when_passed_negative_numbers_throws_an_exception_list
         FAIL() << "Expected std::invalid_argument";
     }
 }
-  // //Act
-  // int actualValue=objUnderTest.Add(input);
-
-  // //ASSERT
-  // ASSERT_EQ(expectedValue,actualValue);
-  // }
 
 TEST(string_calculator_add,when_passed_numbers_over_1000_ignores_them){
   //Arrange
