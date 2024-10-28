@@ -51,7 +51,7 @@ TEST_F(StringCalculatorAddFixture,when_passed_multiple_comma_delimited_numbers_r
 TEST_F(StringCalculatorAddFixture,when_delimited_with_newline_and_comma_returns_their_sum){
   string input="1\n2,3";
   int expectedValue=6;
-  int actualValue=objUnderTest.Add(input);
+  int actualValue=objUnderTest->Add(input);
   ASSERT_EQ(expectedValue,actualValue);
   }
 
