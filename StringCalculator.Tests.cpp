@@ -54,45 +54,6 @@ TEST(string_calculator_add,when_passed_two_comma_delimited_numbers_returns_their
   ASSERT_EQ(expectedValue,actualValue);
   }
 
-TEST(string_calculator_add,when_passed_two_comma_delimited_numbers_returns_their_sum){
-  //Arrange
-  StringCalculator objUnderTest;
-  string input="1,2";
-  int expectedValue=3;
-
-  //Act
-  int actualValue=objUnderTest.Add(input);
-
-  //ASSERT
-  ASSERT_EQ(expectedValue,actualValue);
-  }
-
-TEST(string_calculator_add,when_passed_two_comma_delimited_numbers_returns_their_sum){
-  //Arrange
-  StringCalculator objUnderTest;
-  string input="1,2";
-  int expectedValue=3;
-
-  //Act
-  int actualValue=objUnderTest.Add(input);
-
-  //ASSERT
-  ASSERT_EQ(expectedValue,actualValue);
-  }
-
-TEST(string_calculator_add,when_passed_two_comma_delimited_numbers_returns_their_sum){
-  //Arrange
-  StringCalculator objUnderTest;
-  string input="1,2";
-  int expectedValue=3;
-
-  //Act
-  int actualValue=objUnderTest.Add(input);
-
-  //ASSERT
-  ASSERT_EQ(expectedValue,actualValue);
-  }
-
 TEST(string_calculator_add,when_passed_multiple_comma_delimited_numbers_returns_their_sum){
   //Arrange
   StringCalculator objUnderTest;
