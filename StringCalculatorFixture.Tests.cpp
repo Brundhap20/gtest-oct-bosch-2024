@@ -27,16 +27,78 @@ TEST_F(StringCalculatorAddFixture, Returns_0_For_0){
     ASSERT_EQ(actualValue,expectedValue);
 }
 
-TEST(StringCalculatorAddFixture,returns_1_for_one){
+TEST_F(StringCalculatorAddFixture,returns_1_for_one){
   string input="1";
   int expectedValue=1;
   int actualValue=objUnderTest->Add(input);
   ASSERT_EQ(expectedValue,actualValue);
   }
 
-TEST_F(StringCalculatorAddFixture, Returns_0_For_0){
-    string input="0";
-    int expectedValue=0;
-    int actualValue=objUnderTest->Add(input);
-    ASSERT_EQ(actualValue,expectedValue);
+TEST_F(StringCalculatorAddFixture,when_passed_two_comma_delimited_numbers_returns_their_sum){
+  string input="1,2";
+  int expectedValue=3;
+  int actualValue=objUnderTest->Add(input);
+  ASSERT_EQ(expectedValue,actualValue);
+  }
+
+TEST_F(StringCalculatorAddFixture,when_passed_multiple_comma_delimited_numbers_returns_their_sum){
+  string input="1,2,3";
+  int expectedValue=6;
+  int actualValue=objUnderTest->Add(input);
+  ASSERT_EQ(expectedValue,actualValue);
+  }
+
+TEST_F(StringCalculatorAddFixture,when_delimited_with_newline_and_comma_returns_their_sum){
+  string input="1\n2,3";
+  int expectedValue=6;
+  int actualValue=objUnderTest.Add(input);
+  ASSERT_EQ(expectedValue,actualValue);
+  }
+
+TEST_F(StringCalculatorAddFixture,when_passed_a_delimiter_returns_the_sum_based_on_that_delimiter){
+  string input="//;\n1;2";
+  int expectedValue=3;
+  int actualValue=objUnderTest->Add(input);
+  ASSERT_EQ(expectedValue,actualValue);
+  }
+
+TEST_F(StringCalculatorAddFixture,when_passed_negative_numbers_throws_an_exception_listing_invalid_values){
+  string input="1,-2,-4,5";
+  int expectedValue=3;
+
+    try {
+        objUnderTest->Add(input);
+    } 
+    catch (const std::invalid_argument& e) {
+        EXPECT_EQ(e.what(), std::string("Negatives not allowed: -2,-4"));
+    }
 }
+
+TEST_F(StringCalculatorAddFixture,when_passed_numbers_over_1000_ignores_them){
+  string input="42,1001,3";
+  int expectedValue=45;
+  int actualValue=objUnderTest->Add(input);
+  ASSERT_EQ(expectedValue,actualValue);
+  }
+
+TEST_F(StringCalculatorAddFixture,when_passed_multicharacter_delimiter_uses_that_delimiter_to_sum_values){
+  StringCalculator objUnderTest;
+  string input="//[***]\n8***2***3";
+  int expectedValue=13;
+  int actualValue=objUnderTest->Add(input);
+  ASSERT_EQ(expectedValue,actualValue);
+  }
+
+TEST_F(StringCalculatorAddFixture,when_passed_multiple_delimiters_sums_on_each_delimiter){
+  string input="//[*][%]\n4*2%3";
+  int expectedValue=9;
+  int actualValue=objUnderTest->Add(input);
+  ASSERT_EQ(expectedValue,actualValue);
+  }
+
+TEST_F(StringCalculatorAddFixture,when_passed_multiple_multicharacter_delimiters_sums_on_each_delimiter){
+  string input="//[**][%^]\n4**1%^9";
+  int expectedValue=14;
+  int actualValue=objUnderTest->Add(input);
+  ASSERT_EQ(expectedValue,actualValue);
+  }
