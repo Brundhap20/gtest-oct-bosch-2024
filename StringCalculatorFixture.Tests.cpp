@@ -82,7 +82,6 @@ TEST_F(StringCalculatorAddFixture,when_passed_numbers_over_1000_ignores_them){
   }
 
 TEST_F(StringCalculatorAddFixture,when_passed_multicharacter_delimiter_uses_that_delimiter_to_sum_values){
-  StringCalculator objUnderTest;
   string input="//[***]\n8***2***3";
   int expectedValue=13;
   int actualValue=objUnderTest->Add(input);
