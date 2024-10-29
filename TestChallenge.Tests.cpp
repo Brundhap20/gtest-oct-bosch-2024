@@ -1,10 +1,9 @@
 #include "TestChallenge.h"
 #include <gtest/gtest.h>
 
-TEST(TestChallengeTest, CorrectSum) {
-    int x = 3 , y = 5;
-    int result;
-    add(x, y, &result);
+
+TEST_F(TestChallengeTest, AddTwoPositiveNumbers) {
+    add(3, 5, &result);
     EXPECT_EQ(result, 8);
 }
 
