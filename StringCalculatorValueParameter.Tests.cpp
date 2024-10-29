@@ -20,24 +20,21 @@ class StringCalculatorAddParameterized:public StringCalculatorAddFixture,public 
 
 };
 INSTANTIATE_TEST_SUITE_P(ValidValuesDataSet,StringCalculatorAddParameterized,testing::Values(
-  make_tuple("",0),make_tuple("0",0),make_tuple("1",1),make_tuple("1,2",3),make_tuple("1,2,3",6),make_tuple("1\n2,3",6),make_tuple("//;\n1;2",3),make_tuple("42,1001,3",45),make_tuple("//[***]\n8***2***3",13),make_tuple("//[*][%]\n4*2%3",9),make_tuple("1,2",3),make_tuple("//[**][%^]\n4**1%^9",14)
+  make_tuple("",0),make_tuple("0",0),make_tuple("1",1),make_tuple("1,2",3),make_tuple("1,2,3",6),make_tuple("1\n2,3",6),make_tuple("//;\n1;2",3),make_tuple("42,1001,3",45),make_tuple("//[***]\n8***2***3",13),make_tuple("//[*][%]\n4*2%3",9),make_tuple("//[**][%^]\n4**1%^9",14)
 ));
 
-//For valid inputs 
-TEST_F(StringCalculatorAddParameterized, DataDrivenTestCase){
+//For valid input
+TEST_P(StringCalculatorAddParameterized, DataDrivenTestCase){
     string input=std::get<0>(GetParam());
-    int expectedVal=std::get<1>(GetParam());
-    int actualVal=objUnderTest->Add(input);
-    ASSERT_EQ(actualVal,expectedVal);
+    int expectedValue=std::get<1>(GetParam());
+    int actualValue=objUnderTest->Add(input);
+    ASSERT_EQ(actualValue,expectedValue);
 }
 
-//For invalid input 
-TEST_F(StringCalculatorAddFixture, when_passed_negative_numbers_throws_an_exception_listing_invalid_values){
-    string input="1,-2, 3 -4";
-    //EXPECT_THROW(objUnderTest->Add(input),invalid_argument);
-    EXPECT_ANY_THROW(objUnderTest->Add(input));
+//For invalid input
+TEST_F(StringCalculatorAddFixture, Throw_Invalid_Argumnet_Exceptio_For_Negetive_Numbers){
+    string input="1,-2, 3, -4";
+    EXPECT_THROW(objUnderTest->Add(input),invalid_argument);
   }
-
-
 
 
